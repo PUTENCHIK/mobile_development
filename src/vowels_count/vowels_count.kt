@@ -1,4 +1,4 @@
-import java.util.*
+package vowels_count
 
 fun countVowels(s: String): Int = s.count { it in "aouei" }
 

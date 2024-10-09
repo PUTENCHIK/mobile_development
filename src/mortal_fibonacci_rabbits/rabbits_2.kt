@@ -1,3 +1,5 @@
+package mortal_fibonacci_rabbits
+
 import java.util.*
 
 fun print_array(arr: LongArray) {

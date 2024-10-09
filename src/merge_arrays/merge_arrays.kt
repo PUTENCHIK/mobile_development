@@ -1,4 +1,4 @@
-import java.util.*
+package merge_arrays
 
 
 fun mergeArrays(arr1: IntArray, arr2: IntArray): IntArray {

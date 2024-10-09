@@ -1,3 +1,5 @@
+package fibonacci_rabbits
+
 import java.util.*
 
 fun main() {
