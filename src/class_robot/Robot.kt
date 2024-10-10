@@ -1,6 +1,6 @@
 package class_robot
 
-class Robot(private var x: Int = 0, var y: Int = 0, var direction: Direction) {
+class Robot(private var x: Int, private var y: Int, private var direction: Direction) {
     fun getDirection(): Direction {
         return direction
     }
@@ -14,7 +14,7 @@ class Robot(private var x: Int = 0, var y: Int = 0, var direction: Direction) {
     }
 
     fun turnLeft() {
-        when(direction) {
+        direction = when(direction) {
             Direction.UP -> Direction.LEFT
             Direction.LEFT -> Direction.DOWN
             Direction.DOWN -> Direction.RIGHT
@@ -23,7 +23,7 @@ class Robot(private var x: Int = 0, var y: Int = 0, var direction: Direction) {
     }
 
     fun turnRight() {
-        when(direction) {
+        direction = when(direction) {
             Direction.UP -> Direction.RIGHT
             Direction.LEFT -> Direction.UP
             Direction.DOWN -> Direction.LEFT
