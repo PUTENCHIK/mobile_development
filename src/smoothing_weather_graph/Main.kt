@@ -29,10 +29,13 @@ fun Double.round(accuracy: Int = 7): Double {
 fun main() {
     val data = readFile()
     val smoothed = data.copyOf()
+    print("In data: ")
+    printArray(data)
 
     for (i in 1..data.size-2) {
         smoothed[i] = (data.slice(i-1..i+1).sum() / 3).round()
     }
 
+    print("Answer: ")
     printArray(smoothed)
 }
