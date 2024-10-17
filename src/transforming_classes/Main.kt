@@ -1,14 +1,23 @@
 package transforming_classes
 
 fun main() {
-    val s = Square(2, 2, 3)
+    val s = Square(1, 2, 3)
+    val a = Square(0, 0, 4)
     println(s)
+    println(s.area())
+    println(s.compareTo(a))
 
-    s.rotate(RotateDirection.CounterClockwise, 1, -1)
-    println(s)
-
-    s.rotate(RotateDirection.CounterClockwise, 1, -1)
-    println(s)
+//    s.rotate(RotateDirection.Clockwise, 0, 0)
+//    println(s)
+//
+//    s.rotate(RotateDirection.Clockwise, 0, 0)
+//    println(s)
+//
+//    s.rotate(RotateDirection.Clockwise, 0, 0)
+//    println(s)
+//
+//    s.rotate(RotateDirection.Clockwise, 0, 0)
+//    println(s)
 
 //    s.rotate(RotateDirection.Clockwise, 1, -1)
 //    println(s)

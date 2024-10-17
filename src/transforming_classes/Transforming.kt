@@ -1,9 +1,5 @@
 package transforming_classes
 
-enum class RotateDirection {
-    Clockwise, CounterClockwise
-}
-
 interface Transforming {
     // TODO: увеличивает фигуру, не перемещая, с сохранением пропорций
     fun resize(zoom: Int)
