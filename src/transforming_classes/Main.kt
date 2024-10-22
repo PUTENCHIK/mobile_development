@@ -1,27 +1,22 @@
 package transforming_classes
 
 fun main() {
-    val s = Square(2, 2, 3)
-    println(s)
+    val figures = mapOf<String, Figure>(
+        "circle" to Circle(0, 1, 4),
+        "rect" to Rect(3, 2, 5, 3),
+        "square" to Square(5, 3, 2),
+    )
 
-    s.rotate(RotateDirection.CounterClockwise, 1, -1)
-    println(s)
+    for (key in figures.keys) {
+        val figure = figures[key]
+        println("start $key: $figure")
+        figure?.resize(2)
+        println("resized: $figure")
+        figure?.move(-2, -2)
+        println("moved: $figure")
+        figure?.rotate(RotateDirection.Clockwise, 0, 0)
+        println("rotated: $figure")
 
-    s.rotate(RotateDirection.CounterClockwise, 1, -1)
-    println(s)
-
-//    s.rotate(RotateDirection.Clockwise, 1, -1)
-//    println(s)
-
-    // интерфейсы удобно использовать в коллекциях
-//    val figures: Array<Movable>
-//    val movable: Movable = Rect(0,0,1,1)
-//    movable.move(1,1)
-//    // переменной базового класса
-//    val f: Figure = Rect(0,0,1,1)
-//    val f2: Figure = Circle()
-//
-//    println(f.area())
-//    println(f2.area())
-
+        println()
+    }
 }
