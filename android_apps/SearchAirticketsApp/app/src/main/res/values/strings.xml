@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SearchAirticketsApp</string>
+    <string name="btn_text">Найти билеты</string>
+
+    <string-array name="cities">
+        <item>Иркутск</item>
+        <item>Якутск</item>
+        <item>Укутск</item>
+        <item>Ирмутск</item>
+    </string-array>
+</resources>
