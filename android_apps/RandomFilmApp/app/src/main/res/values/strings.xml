@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">RandomFilmApp</string>
+    <string name="label_text">Следующий фильм:</string>
+    <string name="film_default">Нет фильмов в базе</string>
+    <string name="array_ended">Нажмите сбросить</string>
+    <string name="btn_reset_text">Сбросить</string>
+    <string name="btn_next_text">Следующий</string>
+    <string-array name="films">
+        <item>Шрек</item>
+        <item>Шрек 2</item>
+        <item>Шрек 3</item>
+        <item>Шрек 4</item>
+    </string-array>
+</resources>
