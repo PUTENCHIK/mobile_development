@@ -3,5 +3,11 @@
     <string name="tv_left_text">Введите нижнюю границу:</string>
     <string name="tv_right_text">Введите верхнюю границу:</string>
     <string name="btn_guess_text">Начать игру</string>
-    <string name="tv_error_text">Нижняя граница должна быть меньше верхней</string>
+    <string name="error_no_left">Необходимо ввести нижнюю границу</string>
+    <string name="error_no_right">Необходимо ввести верхнюю границу</string>
+    <string name="error_bad_values">Нижняя граница должна быть меньше верхней</string>
+
+    <string name="btn_no_text">Нет</string>
+    <string name="btn_yes_text">Да</string>
+    <string name="btn_back_text">Назад</string>
 </resources>

@@ -6,18 +6,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_margin="20dp"
     tools:context=".GameActivity">
 
     <Button
-        android:id="@+id/yes"
-        android:layout_width="match_parent"
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onYesNoClick" />
+        android:text="@string/btn_back_text"
+        android:layout_marginBottom="30dp"
+        android:textSize="6pt"
+        android:onClick="backToMain" />
 
-    <Button
-        android:id="@+id/no"
+    <TextView
+        android:id="@+id/question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onYesNoClick" />
+        android:layout_marginBottom="20dp"
+        android:textSize="12pt" />
+
+    <LinearLayout
+        android:id="@+id/answerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:text="@string/btn_no_text"
+            android:onClick="onYesNoClick" />
+
+        <Button
+            android:id="@+id/yes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btn_yes_text"
+            android:onClick="onYesNoClick" />
+
+    </LinearLayout>
 
 </LinearLayout>
