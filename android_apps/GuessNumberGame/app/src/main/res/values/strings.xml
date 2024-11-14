@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GuessNumberGame</string>
+    <string name="tv_left_text">Введите нижнюю границу:</string>
+    <string name="tv_right_text">Введите верхнюю границу:</string>
+    <string name="btn_guess_text">Начать игру</string>
+    <string name="tv_error_text">Нижняя граница должна быть меньше верхней</string>
+</resources>
