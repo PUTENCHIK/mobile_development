@@ -2,6 +2,13 @@
 
 ## Часть 1. Динамическая вёрстка
 
+<table>
+    <tr>
+        <td><img src="images/1_1.jpg" width=360></td>
+        <td><img src="images/1_2.jpg" width=360></td>
+    </tr>
+</table>
+
 ## Часть 2. Логика игры
 
 <table>
