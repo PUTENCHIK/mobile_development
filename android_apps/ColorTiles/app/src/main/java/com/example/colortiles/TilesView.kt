@@ -10,10 +10,12 @@ import android.widget.Toast
 import kotlin.random.Random
 
 
-class TilesView(context: Context): View(context) {
+class TilesView(context: Context, var N: Int): View(context) {
+    public var clicks: Int = 0
+
     private var h: Float = 1000f
     private var w: Float = 1000f
-    private val n: Int = 4
+    private val n: Int = N
     private val margin: Int = 50
     private val padding: Int = 3
     private val paint = Paint()
@@ -88,6 +90,8 @@ class TilesView(context: Context): View(context) {
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
+        clicks++
+
         val i: Int = (event?.y!! / w * n).toInt()
         val j: Int = (event.x / w * n).toInt()
 

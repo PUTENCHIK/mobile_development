@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ColorTiles</string>
+    <string name="tv_clicks">Кликов: </string>
+    <string name="ed_size">n</string>
+    <string name="btn_set_size">Изменить</string>
+    <string name="btn_restart">Заново</string>
 </resources>
