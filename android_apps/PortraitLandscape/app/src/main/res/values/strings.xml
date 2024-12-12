@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PortraitLandscape</string>
+    <string name="btn_previous">Назад</string>
+    <string name="btn_next">Вперёд</string>
+</resources>
