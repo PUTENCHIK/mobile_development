@@ -6,13 +6,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/image"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/pudge" />
+        android:orientation="vertical"
+        android:layout_marginBottom="40dp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/pudge" />
+
+        <TextView
+            android:id="@+id/counter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textStyle="italic"
+            android:textAlignment="center"
+            android:textColor="@color/counter_color"/>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/buttons_container"
@@ -28,7 +48,7 @@
             android:textSize="18dp"
             android:padding="10dp"
             android:layout_weight="1"
-            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:onClick="previousImage" />
 
         <Button
