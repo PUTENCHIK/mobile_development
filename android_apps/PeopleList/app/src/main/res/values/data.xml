@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="names">
+        <item>Василий</item>
+        <item>Пётр</item>
+        <item>Даниил</item>
+        <item>Георгий</item>
+        <item>Александр</item>
+        <item>Максим</item>
+        <item>Дмитрий</item>
+    </string-array>
+    <string-array name="surnames">
+        <item>Петров</item>
+        <item>Шохов</item>
+        <item>Патауч</item>
+        <item>Хорошевич</item>
+        <item>Иванов</item>
+        <item>Семёнов</item>
+        <item>Олохов</item>
+        <item>Урбанов</item>
+        <item>Большезаров</item>
+        <item>Этанов</item>
+        <item>Фидонов</item>
+        <item>Мидович</item>
+    </string-array>
+</resources>
