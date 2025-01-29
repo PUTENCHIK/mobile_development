@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">RecyclerViewApp</string>
     <string name="template">#%1$08x</string>
+<!--    <string name="template">%d</string>-->
 </resources>
