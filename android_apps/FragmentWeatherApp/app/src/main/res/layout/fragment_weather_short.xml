@@ -3,26 +3,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WeatherShort"
-    android:padding="20dp">
+    tools:context=".WeatherShort">
 
     <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:background="@color/bg"
         android:padding="20dp">
 
-        <TextView
-            android:id="@+id/tv_temp"
+        <LinearLayout
+            android:id="@+id/temp_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/temp_default"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="22pt"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/weather_icon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/loading"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/icon_description"/>
+
+            <TextView
+                android:id="@+id/temp_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/default_value"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/title"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/time_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/time_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_label"
+                android:textColor="@color/white"
+                android:textSize="@dimen/labels"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/time_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/default_value"
+                android:textColor="@color/white"
+                android:textSize="@dimen/labels"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

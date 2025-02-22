@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WeatherFull"
-    android:padding="20dp">
+    tools:context=".WeatherFull">
 
     <LinearLayout
         android:id="@+id/container"
@@ -15,6 +14,7 @@
         android:padding="20dp">
 
         <LinearLayout
+            android:id="@+id/temp_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -22,24 +22,89 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/weather_icon"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:src="@drawable/cloudy"
-                android:layout_marginEnd="20dp"/>
+                android:src="@drawable/loading"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/icon_description"/>
 
-            <TextView
-                android:id="@+id/tv_temp"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/temp_default"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="22pt"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/temp_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_value"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/title"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/temp_feels_like_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/temp_feels_like_label"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/labels"/>
+
+                    <TextView
+                        android:id="@+id/temp_feels_like_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/default_value"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/values"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/time_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/time_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_label"
+                android:textColor="@color/white"
+                android:textSize="@dimen/labels"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/time_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/default_value"
+                android:textColor="@color/white"
+                android:textSize="@dimen/labels"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/humidity_wind_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -47,24 +112,26 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:orientation="horizontal"
                 android:gravity="center_horizontal">
 
                 <TextView
+                    android:id="@+id/humidity_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/humidity"
+                    android:text="@string/humidity_label"
                     android:textColor="@color/white"
-                    android:textSize="6pt"
+                    android:textSize="@dimen/labels"
                     android:layout_marginEnd="8dp"/>
 
                 <TextView
+                    android:id="@+id/humidity_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/humidity_value"
+                    android:text="@string/default_value"
                     android:textColor="@color/white"
-                    android:textSize="8pt"
+                    android:textSize="@dimen/values"
                     android:textStyle="bold"/>
 
             </LinearLayout>
@@ -77,25 +144,86 @@
                 android:gravity="bottom">
 
                 <TextView
+                    android:id="@+id/wind_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/wind"
+                    android:text="@string/wind_label"
                     android:textColor="@color/white"
-                    android:textSize="6pt"
+                    android:textSize="@dimen/labels"
                     android:layout_marginEnd="8dp"/>
 
                 <TextView
+                    android:id="@+id/wind_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/wind_value"
+                    android:text="@string/default_value"
                     android:textColor="@color/white"
-                    android:textSize="8pt"
+                    android:textSize="@dimen/values"
                     android:textStyle="bold"/>
 
             </LinearLayout>
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/pressure_visibility_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/pressure_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pressure_label"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/labels"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:id="@+id/pressure_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_value"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/values"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/visibility_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/visibility_label"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/labels"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:id="@+id/visibility_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_value"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/values"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 

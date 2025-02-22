@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="title">22pt</dimen>
+    <dimen name="values">9pt</dimen>
+    <dimen name="labels">7pt</dimen>
+</resources>
