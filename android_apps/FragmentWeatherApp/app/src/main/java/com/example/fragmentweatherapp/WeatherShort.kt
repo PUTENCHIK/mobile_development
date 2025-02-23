@@ -1,6 +1,7 @@
 package com.example.fragmentweatherapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.IOException
 
 class WeatherShort() : Fragment() {
     override fun onCreateView(
@@ -27,7 +29,12 @@ class WeatherShort() : Fragment() {
         CoroutineScope(Dispatchers.IO).launch {
             val data: Data
             try {
+                withContext(Dispatchers.Main) {
+                    activity.can_change = false
+                }
+
                 data = DataGetter.request.getData(appid = API)
+                activity.no_internet_message_shown = false
 
                 val iv_icon = weatherShort.findViewById<ImageView>(R.id.weather_icon)
                 val icon_url = resources.getString(R.string.icon_url).format(data.weather[0].icon)
@@ -42,9 +49,17 @@ class WeatherShort() : Fragment() {
                     tv_temp.text = String.format(resources.getString(R.string.temp_value_template), data.main.temp)
                     tv_time.text = activity.getNow()
                 }
-
-            } catch (e: Exception) {
-                activity.showError(resources.getString(R.string.error_not_loaded))
+            } catch (e: IOException) {
+                withContext(Dispatchers.Main) {
+                    if (!activity.no_internet_message_shown) {
+                        activity.showError(resources.getString(R.string.error_not_loaded))
+                    }
+                    activity.no_internet_message_shown = true
+                }
+            } finally {
+                withContext(Dispatchers.Main) {
+                    activity.can_change = true
+                }
             }
         }
 

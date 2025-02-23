@@ -15,5 +15,6 @@
     <tr>
         <td><img src="images/2_1.jpg" width=360></td>
         <td><img src="images/2_2.jpg" width=360></td>
+        <td><img src="images/2_3.jpg" width=360></td>
     </tr>
 </table>

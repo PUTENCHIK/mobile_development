@@ -18,20 +18,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var fr1: Fragment
     lateinit var fr2: Fragment
 
-    var data: Data? = null
     var is_full: Boolean = false
-
-    val icons = mapOf(
-        "clear sky" to "01",
-        "few clouds" to "02",
-        "scattered clouds" to "03",
-        "broken clouds" to "04",
-        "shower rain" to "09",
-        "rain" to "10",
-        "thunderstorm" to "11",
-        "snow" to "13",
-        "mist" to "50",
-    )
+    var can_change: Boolean = false
+    var no_internet_message_shown: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,12 +40,16 @@ class MainActivity : AppCompatActivity() {
 
         val container = findViewById<FrameLayout>(R.id.frame_container)
         container.setOnClickListener {
-            val ft = fm.beginTransaction()
-            ft.replace(R.id.frame_container, when(is_full) {
-                true -> fr1
-                false -> fr2
-            }).commit()
-            is_full = !is_full
+            Log.d("try_to_click_1", can_change.toString())
+            if (can_change) {
+                Log.d("try_to_click_2", "updating")
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frame_container, when(is_full) {
+                    true -> fr1
+                    false -> fr2
+                }).commit()
+                is_full = !is_full
+            }
         }
     }
 

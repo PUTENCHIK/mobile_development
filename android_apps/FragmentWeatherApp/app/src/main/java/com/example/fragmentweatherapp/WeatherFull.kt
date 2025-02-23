@@ -1,6 +1,5 @@
 package com.example.fragmentweatherapp
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,16 +12,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.IOException
 
 class WeatherFull() : Fragment() {
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        return inflater.inflate(R.layout.fragment_weather_full, container, false)
-//    }
-
-    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,7 +33,12 @@ class WeatherFull() : Fragment() {
         CoroutineScope(Dispatchers.IO).launch {
             val data: Data
             try {
+                withContext(Dispatchers.Main) {
+                    activity.can_change = false
+                }
+
                 data = DataGetter.request.getData(appid = API)
+                activity.no_internet_message_shown = false
 
                 val iv_icon = weatherFull.findViewById<ImageView>(R.id.weather_icon)
                 val icon_url = resources.getString(R.string.icon_url).format(data.weather[0].icon)
@@ -61,9 +58,17 @@ class WeatherFull() : Fragment() {
                     tv_pressure.text = String.format(resources.getString(R.string.pressure_template), data.main.pressure)
                     tv_visibility.text = String.format(resources.getString(R.string.visibility_template), (data.visibility/1000).toFloat())
                 }
-
-            } catch (e: Exception) {
-                activity.showError(e.message ?: resources.getString(R.string.error_not_loaded))
+            } catch (e: IOException) {
+                withContext(Dispatchers.Main) {
+                    if (!activity.no_internet_message_shown) {
+                        activity.showError(resources.getString(R.string.error_not_loaded))
+                    }
+                    activity.no_internet_message_shown = true
+                }
+            } finally {
+                withContext(Dispatchers.Main) {
+                    activity.can_change = true
+                }
             }
         }
 
