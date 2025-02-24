@@ -2,4 +2,5 @@
 <resources>
     <string name="error_default">Неизвестная ошибка</string>
     <string name="error_not_loaded">Не удалось загрузить данные. Попробуйте ещё раз позже.</string>
+    <string name="error_bad_data">Не удалось считать данные в data class</string>
 </resources>

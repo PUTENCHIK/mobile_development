@@ -46,7 +46,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginBottom="30dp">
 
             <TextView
                 android:id="@+id/time_label"
@@ -59,6 +60,31 @@
 
             <TextView
                 android:id="@+id/time_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/default_value"
+                android:textColor="@color/white"
+                android:textSize="@dimen/labels"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/city_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/city_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/city_label"
+                android:textColor="@color/white"
+                android:textSize="@dimen/labels"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/city_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/default_value"

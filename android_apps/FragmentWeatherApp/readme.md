@@ -18,3 +18,13 @@
         <td><img src="images/2_3.jpg" width=360></td>
     </tr>
 </table>
+
+## Задание "Переключение фрагментов в AlertDialog"
+
+<table>
+    <tr>
+        <td><img src="images/3_1.jpg" width=360></td>
+        <td><img src="images/3_2.jpg" width=360></td>
+        <td><img src="images/3_3.jpg" width=360></td>
+    </tr>
+</table>

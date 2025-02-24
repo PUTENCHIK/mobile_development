@@ -1,11 +1,17 @@
 <resources>
     <string name="app_name">FragmentWeatherApp</string>
+
+    <string name="btn_choose_city">Выбрать город</string>
+    <string name="btn_choose_city_neutral_button">Отмена</string>
+    <string name="btn_choose_city_positive_button">Выбрать</string>
+
     <string name="base_url">https://api.openweathermap.org</string>
     <string name="API">a2e5adf9b574bb7ac1225b5746dce04e</string>
     <string name="icon_url">https://openweathermap.org/img/wn/%s@2x.png</string>
     <string name="icon_description">weather icon</string>
 
     <string name="default_value">-</string>
+    <string name="city_label">Город:</string>
     <string name="humidity_label">Влажность:</string>
     <string name="wind_label">Скорость ветра:</string>
     <string name="time_label">Обновлено:</string>
@@ -15,7 +21,7 @@
 
     <string name="temp_value_template">%.1f°</string>
     <string name="humidity_template">%d%%</string>
-    <string name="wind_template">%d м/с</string>
+    <string name="wind_template">%.2f м/с</string>
     <string name="pressure_template">%d мбар</string>
     <string name="visibility_template">%.2f км</string>
 </resources>

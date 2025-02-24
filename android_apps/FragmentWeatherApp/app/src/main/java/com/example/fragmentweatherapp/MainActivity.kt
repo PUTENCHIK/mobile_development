@@ -2,6 +2,7 @@ package com.example.fragmentweatherapp
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     var is_full: Boolean = false
     var can_change: Boolean = false
     var no_internet_message_shown: Boolean = false
+    var current_city: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,20 +42,22 @@ class MainActivity : AppCompatActivity() {
 
         val container = findViewById<FrameLayout>(R.id.frame_container)
         container.setOnClickListener {
-            Log.d("try_to_click_1", can_change.toString())
             if (can_change) {
-                Log.d("try_to_click_2", "updating")
-                val ft = fm.beginTransaction()
-                ft.replace(R.id.frame_container, when(is_full) {
-                    true -> fr1
-                    false -> fr2
-                }).commit()
                 is_full = !is_full
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frame_container, getCurrentFragment()).commit()
             }
         }
     }
 
-    fun showError(message: String) {
+    fun getCurrentFragment(): Fragment {
+        return when (is_full) {
+            false -> fr1
+            true -> fr2
+        }
+    }
+
+    fun showMessage(message: String) {
         val toast: Toast = Toast.makeText(this, message, Toast.LENGTH_LONG)
         toast.show()
     }
@@ -64,5 +68,24 @@ class MainActivity : AppCompatActivity() {
             "EEE, dd MMMM, HH:mm",
             Locale("ru", "RU"))
         return current.format(formatter)
+    }
+
+    fun chooseCityHandler(view: View) {
+        CitySelection(this, current_city).show(supportFragmentManager, "Tag")
+    }
+
+    fun getCurrentCity(): String {
+        val cities = resources.getStringArray(R.array.cities)
+        return cities[current_city]
+    }
+
+    fun updateCity(choice: Int) {
+        current_city = choice
+        Log.d("new_city", getCurrentCity())
+        val ft = fm.beginTransaction()
+        ft.replace(R.id.frame_container, when (is_full) {
+            false -> WeatherShort()
+            true -> WeatherFull()
+        }).commit()
     }
 }

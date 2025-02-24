@@ -27,13 +27,13 @@ data class Coord(
 
 data class Main(
     val feels_like: Float,
-    val grnd_level: Int,
+//    val grnd_level: Int,
     val humidity: Int,
     val pressure: Int,
-    val sea_level: Int,
+//    val sea_level: Int,
     val temp: Float,
-    val temp_max: Float,
-    val temp_min: Float
+//    val temp_max: Float,
+//    val temp_min: Float
 )
 
 data class Sys(
@@ -53,6 +53,6 @@ data class Weather(
 
 data class Wind(
     val deg: Int,
-    val gust: Int,
-    val speed: Int
+//    val gust: Int,
+    val speed: Float
 )
