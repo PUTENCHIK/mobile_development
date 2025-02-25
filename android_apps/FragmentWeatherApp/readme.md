@@ -12,7 +12,7 @@
 ## Задание "Обображение погоды с использованием фрагментов"
 
 <table>
-    <tr>
+    <tr>/home/maxim/study/mobile_development/android_apps/FragmentWeatherApp
         <td><img src="images/2_1.jpg" width=360></td>
         <td><img src="images/2_2.jpg" width=360></td>
         <td><img src="images/2_3.jpg" width=360></td>
