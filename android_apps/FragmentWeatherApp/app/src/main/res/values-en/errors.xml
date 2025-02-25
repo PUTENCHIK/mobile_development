@@ -2,5 +2,6 @@
 <resources>
     <string name="error_default">Unknown error</string>
     <string name="error_not_loaded">Loading data failed. Try again later</string>
+    <string name="error_unknown_menu_item">Have been chosen unknown menu item</string>
     <string name="error_bad_data">Reading weather data failed</string>
 </resources>

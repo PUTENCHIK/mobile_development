@@ -28,3 +28,13 @@
         <td><img src="images/3_3.jpg" width=360></td>
     </tr>
 </table>
+
+## Задание "Работа с меню"
+
+<table>
+    <tr>
+        <td><img src="images/4_1.jpg" width=360></td>
+        <td><img src="images/4_2.jpg" width=360></td>
+        <td><img src="images/4_3.jpg" width=360></td>
+    </tr>
+</table>

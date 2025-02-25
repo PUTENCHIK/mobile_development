@@ -4,6 +4,12 @@
 
     <item
         android:id="@+id/lang_russian"
-        android:title=""
+        android:title="@string/lang_russian"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/lang_english"
+        android:title="@string/lang_english"
+        app:showAsAction="never"/>
 
 </menu>

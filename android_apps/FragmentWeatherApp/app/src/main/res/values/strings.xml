@@ -1,14 +1,18 @@
 <resources>
-    <string name="app_name">FragmentWeatherApp</string>
+    <string name="app_name" translatable="false">FragmentWeatherMap</string>
+    <string name="app_name_view">Прогноз погоды</string>
+
+    <string name="lang_russian">Русский</string>
+    <string name="lang_english">Английский</string>
 
     <string name="btn_choose_city">Выбрать город</string>
     <string name="btn_choose_city_neutral_button">Отмена</string>
     <string name="btn_choose_city_positive_button">Выбрать</string>
 
-    <string name="base_url">https://api.openweathermap.org</string>
-    <string name="API">a2e5adf9b574bb7ac1225b5746dce04e</string>
-    <string name="icon_url">https://openweathermap.org/img/wn/%s@2x.png</string>
-    <string name="icon_description">weather icon</string>
+    <string name="base_url" translatable="false">https://api.openweathermap.org</string>
+    <string name="API" translatable="false">a2e5adf9b574bb7ac1225b5746dce04e</string>
+    <string name="icon_url" translatable="false">https://openweathermap.org/img/wn/%s@2x.png</string>
+    <string name="icon_description" translatable="false">weather icon</string>
 
     <string name="default_value">-</string>
     <string name="city_label">Город:</string>
@@ -19,25 +23,9 @@
     <string name="pressure_label">Давление:</string>
     <string name="visibility_label">Видимость:</string>
 
-    <string name="temp_value_template">%.1f°</string>
-    <string name="humidity_template">%d%%</string>
+    <string name="temp_value_template" translatable="false">%.1f°</string>
+    <string name="humidity_template" translatable="false">%d%%</string>
     <string name="wind_template">%.2f м/с</string>
     <string name="pressure_template">%d мбар</string>
     <string name="visibility_template">%.2f км</string>
-    <string name="title_activity_settings">SettingsActivity</string>
-
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

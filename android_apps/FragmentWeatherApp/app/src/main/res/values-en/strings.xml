@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FragmentWeatherApp</string>
+    <string name="app_name_view">Weather Forecast</string>
+
+    <string name="lang_russian">Russian</string>
+    <string name="lang_english">English</string>
 
     <string name="btn_choose_city">Choose city</string>
     <string name="btn_choose_city_neutral_button">Cancel</string>
     <string name="btn_choose_city_positive_button">Submit</string>
-
-    <string name="base_url">https://api.openweathermap.org</string>
-    <string name="API">a2e5adf9b574bb7ac1225b5746dce04e</string>
-    <string name="icon_url">https://openweathermap.org/img/wn/%s@2x.png</string>
-    <string name="icon_description">weather icon</string>
 
     <string name="default_value">-</string>
     <string name="city_label">City:</string>
@@ -20,8 +18,6 @@
     <string name="pressure_label">Pressure:</string>
     <string name="visibility_label">Visibility:</string>
 
-    <string name="temp_value_template">%.1f°</string>
-    <string name="humidity_template">%d%%</string>
     <string name="wind_template">%.2f mps</string>
     <string name="pressure_template">%d mbar</string>
     <string name="visibility_template">%.2f km</string>

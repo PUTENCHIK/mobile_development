@@ -1,11 +1,18 @@
 package com.example.fragmentweatherapp
 
+import android.app.Activity
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.LocaleList
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -27,6 +34,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        switchLocaleTo(getCurrentLanguage())
+
+        val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
+        setSupportActionBar(toolbar)
 
         fm = supportFragmentManager
         ft = fm.beginTransaction()
@@ -50,6 +61,39 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.lang_russian -> {
+                switchLocaleTo("ru")
+                updateCurrentLanguage("ru")
+                recreate()
+                return true
+            }
+            R.id.lang_english -> {
+                switchLocaleTo("en")
+                updateCurrentLanguage("en")
+                recreate()
+                return true
+            }
+            else -> {
+                showMessage(resources.getString(R.string.error_unknown_menu_item))
+                return false
+            }
+        }
+    }
+
+    fun getSharedPreferences(): SharedPreferences {
+        return this.getSharedPreferences(
+            resources.getString(R.string.app_name),
+            Activity.MODE_PRIVATE
+        )
+    }
+
     fun getCurrentFragment(): Fragment {
         return when (is_full) {
             false -> fr1
@@ -66,7 +110,7 @@ class MainActivity : AppCompatActivity() {
         val current: LocalDateTime = LocalDateTime.now()
         val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern(
             "EEE, dd MMMM, HH:mm",
-            Locale("ru", "RU"))
+            Locale(getCurrentLanguage()))
         return current.format(formatter)
     }
 
@@ -81,11 +125,28 @@ class MainActivity : AppCompatActivity() {
 
     fun updateCity(choice: Int) {
         current_city = choice
-        Log.d("new_city", getCurrentCity())
         val ft = fm.beginTransaction()
         ft.replace(R.id.frame_container, when (is_full) {
             false -> WeatherShort()
             true -> WeatherFull()
         }).commit()
+    }
+
+    fun switchLocaleTo(language: String) {
+        val localeList = LocaleList(Locale(language))
+        LocaleList.setDefault(localeList)
+        resources.configuration.setLocales(localeList)
+        resources.updateConfiguration(resources.configuration, resources.displayMetrics)
+    }
+
+    fun getCurrentLanguage(): String {
+        return getSharedPreferences().getString("lang", resources.getString(R.string.lang_default))!!
+    }
+
+    fun updateCurrentLanguage(new_lang: String) {
+        with(getSharedPreferences().edit()) {
+            putString("lang", new_lang)
+            apply()
+        }
     }
 }

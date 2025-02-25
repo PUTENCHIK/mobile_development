@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="lang_default" translatable="false">ru</string>
+
     <string-array name="cities">
         <item>Irkutsk</item>
         <item>Angarsk</item>

@@ -69,6 +69,7 @@ class WeatherFull : Fragment() {
                 }
             } catch (e: IOException) {
                 withContext(Dispatchers.Main) {
+                    Log.d("inner_error", "Message: ${e.message}")
                     if (!activity.no_internet_message_shown) {
                         activity.showMessage(resources.getString(R.string.error_not_loaded))
                     }
@@ -76,10 +77,12 @@ class WeatherFull : Fragment() {
                 }
             } catch (e: NumberFormatException) {
                 withContext(Dispatchers.Main) {
+                    Log.d("inner_error", "Message: ${e.message}")
                     activity.showMessage(resources.getString(R.string.error_bad_data))
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
+                    Log.d("inner_error", "Message: ${e.message}")
                     activity.showMessage(resources.getString(R.string.error_default))
                 }
             } finally {

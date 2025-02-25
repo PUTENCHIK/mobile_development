@@ -60,8 +60,8 @@ class WeatherShort : Fragment() {
                 }
             } catch (e: IOException) {
                 withContext(Dispatchers.Main) {
+                    Log.d("inner_error", "Message: ${e.message}")
                     if (!activity.no_internet_message_shown) {
-                        Log.d("inner_error", "Message: ${e.message}")
                         activity.showMessage(resources.getString(R.string.error_not_loaded))
                     }
                     activity.no_internet_message_shown = true
