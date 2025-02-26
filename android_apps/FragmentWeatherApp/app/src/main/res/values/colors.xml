@@ -2,5 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="bg">#333333</color>
+    <color name="fragment_bg">#333333</color>
+
+    <color name="color_primary">#3B51FF</color>
+    <color name="color_secondary">#5C6DFF</color>
 </resources>

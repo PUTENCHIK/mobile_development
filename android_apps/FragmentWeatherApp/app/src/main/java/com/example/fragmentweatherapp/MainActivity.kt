@@ -1,11 +1,7 @@
 package com.example.fragmentweatherapp
 
-import android.app.Activity
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.LocaleList
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -16,6 +12,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.fragmentweatherapp.dialogs.CitySelection
+import com.example.fragmentweatherapp.fragments.WeatherFull
+import com.example.fragmentweatherapp.fragments.WeatherShort
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -26,15 +25,20 @@ class MainActivity : AppCompatActivity() {
     lateinit var fr1: Fragment
     lateinit var fr2: Fragment
 
-    var is_full: Boolean = false
+    private lateinit var preferences: MyPreferences
+
     var can_change: Boolean = false
     var no_internet_message_shown: Boolean = false
-    var current_city: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        switchLocaleTo(getCurrentLanguage())
+        preferences = MyPreferences(
+            this,
+            resources.getString(R.string.app_name)
+        )
+
+        switchLocaleTo(preferences.getLanguage())
 
         val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
         setSupportActionBar(toolbar)
@@ -46,7 +50,10 @@ class MainActivity : AppCompatActivity() {
         val fr = fm.findFragmentById(R.id.frame_container)
         if (fr == null) {
             fr1 = WeatherShort()
-            fm.beginTransaction().add(R.id.frame_container, fr1).commit()
+            fm.beginTransaction().add(R.id.frame_container, when (preferences.getViewMode()) {
+                false -> fr1
+                true -> fr2
+            }).commit()
         } else {
             fr1 = fr
         }
@@ -54,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         val container = findViewById<FrameLayout>(R.id.frame_container)
         container.setOnClickListener {
             if (can_change) {
-                is_full = !is_full
+                preferences.invertViewMode()
                 val ft = fm.beginTransaction()
                 ft.replace(R.id.frame_container, getCurrentFragment()).commit()
             }
@@ -70,13 +77,13 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.lang_russian -> {
                 switchLocaleTo("ru")
-                updateCurrentLanguage("ru")
+                preferences.setLanguage("ru")
                 recreate()
                 return true
             }
             R.id.lang_english -> {
                 switchLocaleTo("en")
-                updateCurrentLanguage("en")
+                preferences.setLanguage("en")
                 recreate()
                 return true
             }
@@ -87,15 +94,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getSharedPreferences(): SharedPreferences {
-        return this.getSharedPreferences(
-            resources.getString(R.string.app_name),
-            Activity.MODE_PRIVATE
-        )
-    }
-
     fun getCurrentFragment(): Fragment {
-        return when (is_full) {
+        return when (preferences.getViewMode()) {
             false -> fr1
             true -> fr2
         }
@@ -110,26 +110,28 @@ class MainActivity : AppCompatActivity() {
         val current: LocalDateTime = LocalDateTime.now()
         val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern(
             "EEE, dd MMMM, HH:mm",
-            Locale(getCurrentLanguage()))
+            Locale(preferences.getLanguage())
+        )
         return current.format(formatter)
     }
 
     fun chooseCityHandler(view: View) {
-        CitySelection(this, current_city).show(supportFragmentManager, "Tag")
+        CitySelection(preferences.getCityIndex()).show(supportFragmentManager, "CitySelection")
     }
 
     fun getCurrentCity(): String {
-        val cities = resources.getStringArray(R.array.cities)
-        return cities[current_city]
+        return preferences.getCity()
     }
 
     fun updateCity(choice: Int) {
-        current_city = choice
-        val ft = fm.beginTransaction()
-        ft.replace(R.id.frame_container, when (is_full) {
-            false -> WeatherShort()
-            true -> WeatherFull()
-        }).commit()
+        if (choice != preferences.getCityIndex()) {
+            preferences.setCity(choice)
+            val ft = fm.beginTransaction()
+            ft.replace(R.id.frame_container, when (preferences.getViewMode()) {
+                false -> WeatherShort()
+                true -> WeatherFull()
+            }).commit()
+        }
     }
 
     fun switchLocaleTo(language: String) {
@@ -137,16 +139,5 @@ class MainActivity : AppCompatActivity() {
         LocaleList.setDefault(localeList)
         resources.configuration.setLocales(localeList)
         resources.updateConfiguration(resources.configuration, resources.displayMetrics)
-    }
-
-    fun getCurrentLanguage(): String {
-        return getSharedPreferences().getString("lang", resources.getString(R.string.lang_default))!!
-    }
-
-    fun updateCurrentLanguage(new_lang: String) {
-        with(getSharedPreferences().edit()) {
-            putString("lang", new_lang)
-            apply()
-        }
     }
 }

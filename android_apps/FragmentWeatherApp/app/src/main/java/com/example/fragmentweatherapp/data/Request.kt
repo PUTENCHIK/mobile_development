@@ -1,4 +1,4 @@
-package com.example.fragmentweatherapp
+package com.example.fragmentweatherapp.data
 
 import retrofit2.http.GET
 import retrofit2.http.Query

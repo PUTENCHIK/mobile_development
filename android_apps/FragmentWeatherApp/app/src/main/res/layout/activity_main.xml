@@ -34,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_choose_city"
+            android:textColor="@color/white"
             android:onClick="chooseCityHandler" />
 
     </LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.fragmentweatherapp
+package com.example.fragmentweatherapp.data
 
 data class Data(
     val base: String,
