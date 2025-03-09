@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">NavigationApiApp</string>
+
+    <string name="title_frag1">Fragment 1</string>
+    <string name="title_frag2">Fragment 2</string>
+    <string name="title_frag3">Fragment 3</string>
+    <string name="title_frag4">Fragment 4</string>
+    <string name="title_frag5">Fragment 5</string>
+    <string name="title_frag6">Fragment 6</string>
+
+    <string name="btn_to_frag2">--> frag 2</string>
+    <string name="btn_to_frag3">--> frag 3</string>
+    <string name="btn_to_frag4">--> frag 4</string>
+    <string name="btn_to_frag5">--> frag 5</string>
+    <string name="btn_to_frag6">--> frag 6</string>
+    <string name="btn_back">back</string>
+</resources>

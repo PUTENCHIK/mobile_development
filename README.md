@@ -18,4 +18,5 @@
 3. [Активность с табами (Tabbed Activity)](android_apps/TabsApp/);
 4. [Обображение погоды с использованием фрагментов](android_apps/FragmentWeatherApp/);
 5. [Переключение фрагментов в AlertDialog](android_apps/FragmentWeatherApp/);
-6. [Работа с меню](android_apps/FragmentWeatherApp/)
+6. [Работа с меню](android_apps/FragmentWeatherApp/);
+6. [Практикум по Navigation API](android_apps/NavigationApiApp/)
