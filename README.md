@@ -19,5 +19,6 @@
 4. [Обображение погоды с использованием фрагментов](android_apps/FragmentWeatherApp/);
 5. [Переключение фрагментов в AlertDialog](android_apps/FragmentWeatherApp/);
 6. [Работа с меню](android_apps/FragmentWeatherApp/);
-6. [Практикум по Navigation API](android_apps/NavigationApiApp/);
-7. [Практикум по NavigationDrawer](android_apps/NavigationDrawerApp/).
+7. [Практикум по Navigation API](android_apps/NavigationApiApp/);
+8. [Практикум по NavigationDrawer](android_apps/NavigationDrawerApp/);
+9. [Отображение погоды с помощью Data binding](android_apps/FragmentWeatherApp/);

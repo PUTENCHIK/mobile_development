@@ -38,3 +38,15 @@
         <td><img src="images/4_3.jpg" width=360></td>
     </tr>
 </table>
+
+## Задание "Отображение погоды с помощью Data binding"
+
+<table>
+    <tr>
+        <td rowspan="2"><img src="images/5_1.jpg" width=360></td>
+        <td><img src="images/5_2.jpg"></td>
+    </tr>
+    <tr>
+        <td><img src="images/5_3.jpg"></td>
+    </tr>
+</table>

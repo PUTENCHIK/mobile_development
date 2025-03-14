@@ -6,12 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import com.example.fragmentweatherapp.data.Data
 import com.example.fragmentweatherapp.data.DataGetter
 import com.example.fragmentweatherapp.MainActivity
 import com.example.fragmentweatherapp.R
+import com.example.fragmentweatherapp.data.DataViewModel
+import com.example.fragmentweatherapp.databinding.FragmentWeatherShortBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,15 +23,17 @@ import java.lang.NumberFormatException
 
 class WeatherShort : Fragment() {
 
+    lateinit var binding: FragmentWeatherShortBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentWeatherShortBinding.inflate(layoutInflater)
         val activity = requireActivity() as MainActivity
-        val weatherShort = inflater.inflate(R.layout.fragment_weather_short, container, false)
-        val tv_temp = weatherShort.findViewById<TextView>(R.id.temp_value)
-        val tv_time = weatherShort.findViewById<TextView>(R.id.time_value)
-        val tv_city = weatherShort.findViewById<TextView>(R.id.city_value)
+        val weatherShort = binding.root
+        val dataViewModel = ViewModelProvider(this).get(DataViewModel::class.java)
+        dataViewModel.setContext(requireContext())
 
         val API = resources.getString(R.string.API)
 
@@ -47,7 +50,6 @@ class WeatherShort : Fragment() {
                 )
                 activity.no_internet_message_shown = false
 
-                val iv_icon = weatherShort.findViewById<ImageView>(R.id.weather_icon)
                 val icon_url = resources.getString(R.string.icon_url).format(data.weather[0].icon)
 
                 withContext(Dispatchers.Main) {
@@ -55,11 +57,11 @@ class WeatherShort : Fragment() {
                         .load(icon_url)
                         .placeholder(R.drawable.loading)
                         .error(R.drawable.unknown)
-                        .into(iv_icon)
+                        .into(binding.weatherIcon)
 
-                    tv_temp.text = String.format(resources.getString(R.string.temp_value_template), data.main.temp)
-                    tv_time.text = activity.getNow()
-                    tv_city.text = activity.getCurrentCity()
+                    dataViewModel.updateData(data)
+                    binding.data = dataViewModel
+                    binding.lifecycleOwner = viewLifecycleOwner
                 }
             } catch (e: IOException) {
                 withContext(Dispatchers.Main) {
