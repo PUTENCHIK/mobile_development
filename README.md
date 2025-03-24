@@ -22,3 +22,4 @@
 7. [Практикум по Navigation API](android_apps/NavigationApiApp/);
 8. [Практикум по NavigationDrawer](android_apps/NavigationDrawerApp/);
 9. [Отображение погоды с помощью Data binding](android_apps/FragmentWeatherApp/);
+10. [Получение котировок криптовалют с помощью сервисов](android_apps/CurrencyTrackingApp/);

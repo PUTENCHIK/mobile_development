@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CurrencyTrackingApp</string>
+    <string name="app_title">Котировки криптовалюты</string>
+    <string name="crypto_icon_description">Icon</string>
+    <string name="crypto_name">Bitcoin</string>
+    <string name="currency_icon_description">Curr icon</string>
+</resources>

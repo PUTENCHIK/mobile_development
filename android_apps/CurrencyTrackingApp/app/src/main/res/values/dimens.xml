@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="h1_size">24dp</dimen>
+    <dimen name="normal_font">20dp</dimen>
+    <dimen name="minor_font">14dp</dimen>
+
+    <dimen name="app_padding_top">60dp</dimen>
+    <dimen name="base_margin">15dp</dimen>
+    <dimen name="minor_margin">5dp</dimen>
+    <dimen name="crypto_icon_size">48dp</dimen>
+    <dimen name="currency_icon_size">28dp</dimen>
+</resources>
