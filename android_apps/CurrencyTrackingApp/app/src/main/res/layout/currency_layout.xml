@@ -24,14 +24,41 @@
             android:id="@+id/currency_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Доллар, USD"
             android:textSize="@dimen/normal_font" />
 
-        <TextView
-            android:id="@+id/currency_quotation"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/normal_font"
-            android:textAlignment="textEnd" />
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/currency_quotation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="87645.12"
+                    android:textSize="@dimen/normal_font"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/currency_difference"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+1356.56"
+                    android:textSize="@dimen/minor_font"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -46,6 +73,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/minor_font"
             android:textStyle="italic"
+            android:text="25 марта, 21:43:30"
             android:textAlignment="textEnd" />
 
     </LinearLayout>

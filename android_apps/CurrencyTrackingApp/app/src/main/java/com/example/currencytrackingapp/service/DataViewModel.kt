@@ -13,4 +13,8 @@ class DataViewModel : ViewModel() {
     fun updateData(d: ResponseData) {
         _data.postValue(d)
     }
+
+    fun getData(): ResponseData? {
+        return data.value
+    }
 }

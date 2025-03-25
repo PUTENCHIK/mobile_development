@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import com.example.currencytrackingapp.R
 import com.example.currencytrackingapp.databinding.CurrencyLayoutBinding
 import java.time.format.DateTimeFormatter
 import java.util.Locale
+import kotlin.math.abs
 
 class CurrencyAdapter(
     context: Context,
@@ -32,9 +34,24 @@ class CurrencyAdapter(
         }
 
         listItem?.let {
+            var sign = ""
+            var color = context.resources.getColor(R.color.white)
+            when {
+                listItem.difference > 0 -> {
+                    sign = "+"
+                    color = context.resources.getColor(R.color.rising)
+                }
+                listItem.difference < 0 -> {
+                    sign = "-"
+                    color = context.resources.getColor(R.color.falling)
+                }
+            }
+
             binding.currencyIcon.setImageResource(it.iconSrc)
             binding.currencyName.text = "${it.label}, ${it.name}"
-            binding.currencyQuotation.text = "${it.quotation}"
+            binding.currencyQuotation.text = String.format("%.2f", it.quotation)
+            binding.currencyDifference.text = String.format("%s%.2f", sign, abs(it.difference))
+            binding.currencyDifference.setTextColor(color)
             binding.currencyUpdated.text = it.updated.format(formatter)
         }
 

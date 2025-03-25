@@ -7,5 +7,6 @@ data class CurrencyObject(
     val name: String,
     val label: String,
     var quotation: Float,
+    var difference: Float,
     var updated: LocalDateTime
 )

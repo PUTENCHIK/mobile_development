@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.IBinder
 import android.util.Log
 import com.example.currencytrackingapp.data.DataGetter
+import com.example.currencytrackingapp.data.ResponseData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -13,11 +14,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
+import kotlin.math.abs
 
 class CurrencyService : Service() {
 
     private val TAG = "currency_service"
-    private val checking_delay: Long = 60000
+    private val checking_delay: Long = 5000
 
     override fun onCreate() {
         Log.i(TAG, "Service created")
@@ -37,8 +39,13 @@ class CurrencyService : Service() {
                         )
                     }
                     if (response.isSuccessful) {
-                        val data = response.body()
+                        var data = response.body()
                         if (data != null) {
+                            val oldData = dataViewModel.getData()
+                            Log.i(TAG, "Data gotten: $data")
+                            if (oldData != null) {
+                                data = updateData(oldData, data)
+                            }
                             dataViewModel.updateData(data)
                             Log.i(TAG, "Data updated: $data")
                         } else {
@@ -71,10 +78,32 @@ class CurrencyService : Service() {
 
     companion object {
         val dataViewModel = DataViewModel()
+        val percent_changing: Float = 0.0001f
 
         fun startService(context: Context) {
             val intent = Intent(context, CurrencyService::class.java)
             context.startService(intent)
+        }
+
+        fun updateData(old: ResponseData, new: ResponseData): ResponseData {
+            val usd_ratio = abs(old.USD - new.USD) / old.USD
+            val eur_ratio = abs(old.EUR - new.EUR) / old.EUR
+            val rub_ratio = abs(old.RUB - new.RUB) / old.RUB
+
+            return ResponseData(
+                USD = when {
+                    usd_ratio >= percent_changing -> new.USD
+                    else -> old.USD
+                },
+                EUR = when {
+                    eur_ratio >= percent_changing -> new.EUR
+                    else -> old.EUR
+                },
+                RUB = when {
+                    rub_ratio >= percent_changing -> new.RUB
+                    else -> old.RUB
+                }
+            )
         }
     }
 }

@@ -5,6 +5,7 @@
     <dimen name="minor_font">14dp</dimen>
 
     <dimen name="app_padding_top">60dp</dimen>
+    <dimen name="list_padding">25dp</dimen>
     <dimen name="base_margin">15dp</dimen>
     <dimen name="minor_margin">5dp</dimen>
     <dimen name="crypto_icon_size">48dp</dimen>
