@@ -24,3 +24,4 @@
 9. [Отображение погоды с помощью Data binding](android_apps/FragmentWeatherApp/);
 10. [Получение котировок криптовалют с помощью сервисов](android_apps/CurrencyTrackingApp/);
 11. [Уведомление об изменении курса криптовалюты](android_apps/CurrencyTrackingApp/);
+12. [Использование геолокации](android_apps/DetectingLocationApp/);

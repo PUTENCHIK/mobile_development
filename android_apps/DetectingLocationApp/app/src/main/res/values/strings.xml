@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DetectingLocationApp</string>
+    <string name="main_title">Определение местоположения</string>
+    <string name="last_updated_label">Последнее обновление:</string>
+    <string name="unknown">неизвестно</string>
+    <string name="latitude_label">Широта:</string>
+    <string name="longitude_label">Долгота:</string>
+    <string name="coordinates_template">\%d° \%d\' \%.3f\'\'</string>
+    <string name="status_label">Местоположение:</string>
+    <string name="location_on">включено</string>
+    <string name="location_off">выключено</string>
+</resources>
