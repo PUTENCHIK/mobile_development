@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="header_size">16pt</dimen>
+    <dimen name="waiter_size">200dp</dimen>
+    <dimen name="margin_default">30dp</dimen>
+    <dimen name="margin_big">60dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="normal_text">8pt</dimen>
+</resources>
