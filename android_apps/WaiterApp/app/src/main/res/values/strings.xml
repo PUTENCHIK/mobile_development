@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">WaiterApp</string>
     <string name="page_header">Ваш Ждун</string>
+    <string name="time_passed_label">Время созерцания:</string>
+    <string name="is_feeding_label">Кормится ли Ждун:</string>
+    <string name="button_default">Хватит это терпеть!</string>
+    <string name="button_alter">Снова ждать</string>
+    <string name="image_description">None</string>
+
+    <string name="time_passed_template_1">%d минута</string>
+    <string name="time_passed_template_2_4">%d минуты</string>
+    <string name="time_passed_template_5_9">%d минут</string>
+    <string name="is_feeding_true">Да</string>
+    <string name="is_feeding_false">Нет</string>
 </resources>
