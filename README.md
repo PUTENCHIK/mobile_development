@@ -26,4 +26,5 @@
 11. [Уведомление об изменении курса криптовалюты](android_apps/CurrencyTrackingApp/);
 12. [Использование геолокации](android_apps/DetectingLocationApp/);
 13. [Получение системных сообщений (Ждун)](android_apps/WaiterApp/);
-14. [Хранение информации о российских компаниях (Room)](android_apps/RoomRecyclerApp/);
+14. (недоделано) [Хранение информации о российских компаниях (Room)](android_apps/RoomRecyclerApp/);
+15. [Отображение списка сенсоров](android_apps/SensorsDisplayApp/);

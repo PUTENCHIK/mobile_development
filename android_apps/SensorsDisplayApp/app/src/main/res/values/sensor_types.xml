@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sensor_types">
+        <item>Датчики окружающей среды</item>
+        <item>Датчики положения устройства</item>
+        <item>Датчики состояния человека</item>
+    </string-array>
+</resources>
