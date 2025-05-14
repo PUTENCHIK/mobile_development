@@ -31,8 +31,7 @@
             android:paddingBottom="@dimen/spinner_vpadding"
             android:paddingStart="@dimen/spinner_hpadding"
             android:paddingEnd="@dimen/spinner_hpadding"
-            android:layout_marginBottom="@dimen/row_span"
-            android:entries="@array/sensor_types" />
+            android:layout_marginBottom="@dimen/row_span" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/sensors_list"

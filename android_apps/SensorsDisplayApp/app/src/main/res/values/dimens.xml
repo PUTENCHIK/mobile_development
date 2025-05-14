@@ -2,7 +2,7 @@
 <resources>
     <dimen name="content_padding">20dp</dimen>
     <dimen name="spinner_vpadding">16dp</dimen>
-    <dimen name="spinner_hpadding">0</dimen>
+    <dimen name="spinner_hpadding">0dp</dimen>
     <dimen name="row_span">10dp</dimen>
     <dimen name="list_padding">8dp</dimen>
 </resources>
