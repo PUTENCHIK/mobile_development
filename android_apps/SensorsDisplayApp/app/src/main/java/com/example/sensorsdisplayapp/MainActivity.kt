@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var sensor_manager: SensorManager
     lateinit var listData: ArrayList<String>
+    lateinit var all_sensors: List<Sensor>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,14 +42,16 @@ class MainActivity : AppCompatActivity() {
 
         sensor_manager = getSystemService(SENSOR_SERVICE) as SensorManager
 
+        all_sensors = sensor_manager.getSensorList(Sensor.TYPE_ALL)
+
         binding.spinnerSensors.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
                 listData.clear()
-                val sensor_list = sensor_manager.getSensorList(sensor_types[pos] ?: -1)
-                if (sensor_list.isEmpty()) {
+                val sortedSensors = sortSensorList(pos)
+                if (sortedSensors.isEmpty()) {
                     listData.add("empty")
                 } else {
-                    for (sensor in sensor_list) {
+                    for (sensor in sortedSensors) {
                         listData.add(sensor.name)
                     }
                 }
@@ -59,6 +62,37 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "onNothingSelected")
             }
         }
+    }
 
+    fun sortSensorList(pos: Int): List<Sensor> {
+        return when (pos) {
+            0 -> all_sensors.filter {
+                it.type == Sensor.TYPE_MAGNETIC_FIELD ||
+                it.type == Sensor.TYPE_LIGHT ||
+                it.type == Sensor.TYPE_PRESSURE ||
+                it.type == Sensor.TYPE_RELATIVE_HUMIDITY ||
+                it.type == Sensor.TYPE_AMBIENT_TEMPERATURE
+            }
+            1 -> all_sensors.filter {
+                it.type == Sensor.TYPE_ACCELEROMETER ||
+                it.type == Sensor.TYPE_GYROSCOPE ||
+                it.type == Sensor.TYPE_PROXIMITY ||
+                it.type == Sensor.TYPE_GRAVITY ||
+                it.type == Sensor.TYPE_LINEAR_ACCELERATION ||
+                it.type == Sensor.TYPE_ROTATION_VECTOR ||
+                it.type == Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR ||
+                it.type == Sensor.TYPE_GYROSCOPE_UNCALIBRATED ||
+                it.type == Sensor.TYPE_SIGNIFICANT_MOTION ||
+                it.type == Sensor.TYPE_STEP_DETECTOR ||
+                it.type == Sensor.TYPE_STEP_COUNTER ||
+                it.type == Sensor.TYPE_MOTION_DETECT
+            }
+            2 -> all_sensors.filter {
+                it.type == Sensor.TYPE_HEART_RATE ||
+                it.type == Sensor.TYPE_HEART_BEAT ||
+                it.type == Sensor.TYPE_LOW_LATENCY_OFFBODY_DETECT
+            }
+            else -> arrayListOf()
+        }
     }
 }
